@@ -1,0 +1,34 @@
+syntax="proto3";
+//protobuf的单行注释
+/*
+  protobuf的多行注释
+  package :关键字，声明包名，默认转换成go中的包名与此一致，如果需要指定不一样的包名，使用go_package选项
+*/
+
+package test;
+option go_package="./;test_go";
+/*
+  Messgae：对应go中的struct，全部使用驼峰命名规则。
+  嵌套定义的message、enum转换为go后，名称变为Parent_Child结构
+ */
+message Test {
+  int32 age = 1;
+  int64 count = 2;
+  double money = 3;
+  float score = 4;
+  string name = 5;
+  bool fat = 6;
+  bytes char = 7;
+  // Status 枚举状态
+  enum Status {
+    OK = 0;
+    FAIL = 1;
+  }
+  Status status = 8;
+  // Child 子结构
+  message Child {
+    string sex = 1;
+  }
+  Child child = 9;
+  map<string,string> dict = 10;
+}

@@ -1,0 +1,22 @@
+syntax="proto3";
+
+package test_go;
+
+option go_package="./;test_go";
+
+// 测试服务
+service TestServer {
+  // Test 测试方法
+  rpc Test(Request) returns (Response){}
+}
+
+// 请求结构
+message Request {
+  string name = 1;
+}
+
+// 响应结构
+message Response {
+  string message = 1;
+
+}
